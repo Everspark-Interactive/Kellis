@@ -1,0 +1,55 @@
+<?php
+/**
+ * The template for displaying the footer.
+ *
+ * Contains the closing of the #content div and all content after
+ *
+ * @package WPCharming
+ */
+global $wpc_option;
+?>
+	</div><!-- #content -->
+	
+	<div class="clear"></div>
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="container">
+			
+			<?php if ( $wpc_option['footer_widgets'] ) { ?>
+			<div class="footer-widgets-area">
+				<?php $footer_columns = $wpc_option['footer_columns']; ?>
+				<?php if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) { ?>
+					<div class="sidebar-footer footer-columns footer-<?php echo $footer_columns ?>-columns clearfix">
+						<?php 
+						for ( $count = 1; $count <= $footer_columns; $count++ ) {
+							?>
+							<div id="footer-<?php echo $count ?>" class="footer-<?php echo $count ?> footer-column widget-area" role="complementary">
+								<?php dynamic_sidebar('footer-'.$count);?>
+							</div>
+							<?php
+						}
+						?>
+					</div>
+				<?php } ?>
+			</div>
+			<?php } ?>
+			<div class="site-info clearfix">
+				<div class="copy_text">
+					<p>Steven Kellis Firm Reviews: <span itemprop="review" itemscope itemtype="http://schema.org/CreativeWork"><span itemprop="name">Steven E. Kellis</span> – Reviewed by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name" >Avvo</span></span><time itemprop="datePublished" datetime="2016/02/03"></time> – <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">Rating:<span itemprop="ratingValue">5.0</span> <meta itemprop="bestRating" content="5" /> <meta itemprop="worstRating" content="0" /><meta itemprop="ratingCount" content="1" /></p>
+					
+                    <p>Copyright © <?php echo date("Y"); ?> Steven E. Kellis.</p>
+<?php if(wp_is_mobile()){ ?>
+<p><a href="http://www.eversparkinteractive.com">Everspark Interactive Digital Marketing</a></p>
+<?php } ?>
+				</div>
+				<div class="footer-menu">
+					<ul class="footer-menu">
+						<?php wp_nav_menu( array('theme_location' => 'footer', 'container' => '', 'items_wrap' => '%3$s', 'fallback_cb' => false ) ); ?>
+					</ul>
+				</div>
+			</div><!-- .site-info -->
+		</div>
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+<?php wp_footer(); ?>
+</body>
+</html>

@@ -1,0 +1,42 @@
+jQuery(function() {
+	var items = jQuery('.overlapblackbg, .slideLeft');
+	var wsmenucontent = jQuery('.wsmenucontent');
+	
+	var menuopen = function() {
+	jQuery(items).removeClass('menuclose').addClass('menuopen');
+						}
+	var menuclose = function() { 
+	jQuery(items).removeClass('menuopen').addClass('menuclose');
+	}
+
+	jQuery('#navToggle').click(function(){
+		if (wsmenucontent.hasClass('menuopen')) {jQuery(menuclose)}
+		else {jQuery(menuopen)}
+	});
+	wsmenucontent.click(function(){
+		if (wsmenucontent.hasClass('menuopen')) {jQuery(menuclose)}
+	});
+	
+	jQuery('#navToggle,.overlapblackbg').on('click', function(){
+	jQuery('.wsmenucontainer').toggleClass( "mrginleft" );
+	
+	});
+
+	jQuery('.wsmenu-list li').has('.wsmenu-submenu, .wsmenu-submenu-sub, .wsmenu-submenu-sub-sub').prepend('<span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span>');
+	
+	jQuery('.wsmenu-list li').has('.megamenu').prepend('<span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span>');
+
+		
+	jQuery('.wsmenu-mobile').click(function(){
+		jQuery('.wsmenu-list').slideToggle('slow');
+	});
+	jQuery('.wsmenu-click').click(function(){
+	jQuery(this).siblings('.wsmenu-submenu').slideToggle('slow');
+	jQuery(this).children('.wsmenu-arrow').toggleClass('wsmenu-rotate');
+	jQuery(this).siblings('.wsmenu-submenu-sub').slideToggle('slow');
+	jQuery(this).siblings('.wsmenu-submenu-sub-sub').slideToggle('slow');
+	jQuery(this).siblings('.megamenu').slideToggle('slow');
+
+	});
+	
+});

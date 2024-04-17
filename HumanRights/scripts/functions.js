@@ -1,0 +1,27 @@
+	
+	// Custom JS
+	$(window).load(function(){
+		$('#left_area_img1').click(function(){
+			jQuery("#left").animate({right:-5});
+			jQuery('#left_area_img1').css('display','none');
+			jQuery('#left_area_img2').css('display','block');
+			//jQuery('#left_area_img2').css('margin-left', -48);
+			//jQuery("#left_area_img2").animate({'margin-left':-48});
+			//jQuery('.area_left').css('width', 261);
+			//jQuery('.left_area').css('width', 261); 
+		});
+		$('#left_area_img2').click(function(){
+			jQuery("#left").animate({right:-261});
+			jQuery('#left_area_img1').css('display','block');
+			jQuery('#left_area_img2').css('display','none');
+			//jQuery('.left_area').css('width', 49);
+			//jQuery('#left_area_img1').css('margin-left', 0);
+			//jQuery('#left_area_img1').animate({'margin-left': 0});
+		});
+	});
+	 
+	$(window).load(function(){
+		$('.homepage_load_content button').click(function(){
+			$('#hd_content').slideToggle("slow");
+		});
+	});

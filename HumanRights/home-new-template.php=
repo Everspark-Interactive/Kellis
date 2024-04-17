@@ -1,0 +1,376 @@
+	<?php
+/*
+Template Name: ESI Front Page Template
+
+*/
+
+get_header('new');
+
+?>  
+<!-- Content area start -->
+<div class="section-slider">
+	<div class="fullwidthbanner-container">
+		<div id="myCarousel" class="carousel slide">
+			<div class="carousel-inner">			
+				<div class="item active showslid-mobile">
+				<?php $banner_img = get_field('home_banner', 'option'); ?>
+					<div class="fill" style="background-image: url('<?php echo $banner_img['url']; ?>"></div>
+
+					<div class="carousel-caption">
+
+						<div class="container">
+
+							<div class="caption-outer1">
+
+								<div class="slide-img">
+                                <?php $banner_overlay_img = get_field('banner_overlay_image', 'option'); ?>
+                          <img alt="<?php echo $banner_overlay_img['alt']; ?>" src="<?php echo $banner_overlay_img['url']; ?>" />
+                                </div>
+
+                                <div class="slider-right">
+								<?php the_field('banner_text', 'option'); ?>
+                                
+                                <div class="titlebtn">
+                                <a href="<?php the_field('learn_more_link', 'option'); ?>">LEARN MORE</a>
+                                <a class="btnred" href="<?php the_field('contact_us_link', 'option'); ?>">CONTACT US</a>
+                                </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>			
+			</div>			
+		</div>
+	</div>
+</div>
+
+<div class="section-whitebg parallax slider-btm">
+    <div class="red-bg">
+        <div class="container">
+        	<h4><?php the_field('awards_accolades_title', 'option'); ?></h4>
+        </div>
+    </div>    
+    <div class="skin-bg">
+        <div class="container">
+            <ul>
+             <?php if( have_rows('awards_accolades_badges', 'option') ): while ( have_rows('awards_accolades_badges', 'option') ) : the_row(); ?>
+              <?php $badges_img = get_sub_field('badge_image', 'option'); ?>
+             <li><img src="<?php echo $badges_img['url']; ?>" alt="<?php echo $badges_img['alt']; ?>"></li>             
+             <?php endwhile;wp_reset_postdata(); endif; ?>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section-whitebg welcome-section">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-left">
+        	<iframe allowfullscreen="" src="<?php the_field('content_video_link', 'option'); ?>"></iframe>       
+        <div class="home-vdbtm">
+			<?php the_field('about_kellis_title', 'option'); ?>
+        </div>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 pull-right wel-dtl">
+			<?php the_field('video_content', 'option'); ?>
+        </div>        
+        <div class="clear">&nbsp;</div>        
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left browsmapopen">
+			<?php the_field('about_kellis_content', 'option'); ?>
+            
+            <div class="text-center">
+            <a class="btn btn-primary" href="<?php the_field('about_read_more_link', 'option'); ?>">Read More</a>
+            </div>
+         </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-title">
+    <div class="container">
+    	<h2>DUI INFORMATION</h2>
+    </div>
+</div>
+
+<div class="parallax section-whitebg dui-information">
+    <div class="container">
+        <div class="row">
+         <?php $dui_count = 1; ?>
+         <?php if( have_rows('dui_information', 'option') ): while ( have_rows('dui_information', 'option') ) : the_row(); ?>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 tab-nobmargin pull-left text-center">
+            <div class="dui-title dui-title<?php echo $dui_count; ?>">
+            <h4><span></span><?php the_sub_field('dui_title', 'option'); ?></h4>
+            </div>            
+            <div class="dui-dtl">
+            <p><?php the_sub_field('dui_short_description', 'option'); ?></p>
+            <a class="btn btn-primary" href="<?php the_sub_field('dui_link', 'option'); ?>">Learn More</a>
+            </div>
+         </div>
+        <?php $dui_count++; endwhile; wp_reset_postdata(); endif; ?>
+        </div>
+    </div>
+</div>
+
+<div class="parallax section-whitebg dui-attorney text-center">
+    <div class="container">
+    <h3>Pennsylvania DUI Attorney</h3>
+    
+        <p>A drinking and driving charge can be a confusing and stressful experience, especially if it&rsquo;s your first arrest. A <a href="http://www.pennsylvania-dui-lawyer.com/beta/practice-areas/dui-accidents">DUI</a> conviction can permanently alter your life by affecting your ability to drive, your job, your future employment opportunities, and your freedom. The <a href="http://www.pennsylvania-dui-lawyer.com/beta/pennsylvania-dui-information/pennsylvania-dui-penalties">penalties for a DUI in Pennsylvania</a> are potentially severe, particularly when it is not your first offense. The initial step after being charged with a DUI is to immediately contact an attorney for an evaluation. <a href="http://www.pennsylvania-dui-lawyer.com/beta/pennsylvania-dui-information/pa-state-dui-laws">Pennsylvania DUI law</a> is complex and requires advice from an experienced DUI lawyer who can successfully resolve your charge. Because harsh penalties can result from a drunk driving conviction, a strong defense strategy should be built for your case. It is very important to understand your rights before proceeding with the legal process.</p>
+        
+        <p>Selecting an appropriate attorney to handle your case is vital. Due to the potential complications associated with DUI law in Pennsylvania, it&rsquo;s important to have representation from an attorney who understands both sides of the law, the prosecution and the defense. Steven Kellis spent five years working with DUI cases as a Senior Assistant District Attorney and DUI Prosecutor, experience that gave him firsthand knowledge of the methods used by prosecutors and police officers in drunk driving cases. As a defense attorney, Mr. Kellis has aggressive investigation and cross-examination tactics, and has represented clients in DUI cases for more than 20 years. His law practice is focused solely on Pennsylvania DUI defense.</p>
+        <!-- Nav tabs -->
+        
+        <ul class="nav nav-tabs" role="tablist">
+        <?php $tab_count = 1; ?>
+        <?php if( have_rows('tabs_section', 'option') ): while ( have_rows('tabs_section', 'option') ) : the_row(); ?>
+        
+        <li class="<?php if($tab_count==1){echo 'active';} ?>" <?php if($tab_count<=4){echo 'role="presentation"';} ?>>
+        <?php $tab_link = get_sub_field('tab_link', 'option'); ?>
+        <a aria-controls="<?php if($tab_count==1){ echo 'home'; }elseif($tab_count==2){ echo 'profile'; }elseif($tab_count==3){ echo 'messages'; }elseif($tab_count==4){ echo 'settings'; } ?>" data-toggle="tab" href="<?php if(($tab_link=='#')){ echo $tab_link; }else{echo '#tab'.$tab_count;} ?>">
+		<?php the_sub_field('tab_title', 'option'); ?>
+        </a>
+        </li>
+        
+        <?php $tab_count++; endwhile; wp_reset_postdata(); endif; ?>
+        </ul>
+    <!-- Tab panes -->
+    
+        <div class="tab-content">
+        <?php $tab_cont_count = 1; ?>
+        <?php if( have_rows('tabs_section', 'option') ): while ( have_rows('tabs_section', 'option') ) : the_row(); ?>
+        <?php $tab_content = get_sub_field('tab_content', 'option'); 
+		if (!empty($tab_content)){ ?>
+			        
+        <div class="tab-pane <?php if($tab_cont_count==1){echo 'active';} ?>" id="<?php echo 'tab'.$tab_cont_count; ?>" role="tabpanel">
+       	<?php echo $tab_content; ?>
+        </div>
+		<?php } ?>
+
+        <?php $tab_cont_count++; endwhile; wp_reset_postdata(); endif; ?>
+        </div>
+    </div>
+</div>
+
+<div class="parallax section-whitebg practice-area">
+<div class="container">
+<div class="pric-top">
+<div class="row">
+
+<?php $counter = 7; $row_counter = 1; ?>
+<?php if( have_rows('practice_areas', 'option') ): while ( have_rows('practice_areas', 'option') ) : the_row(); ?>
+<?php if ($row_counter <= 3) { ?>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-left pra-box">
+<div class="home-practicearea">
+<div class="pra-title pra-icon<?php echo $counter;?>">
+<?php $parea_img = get_sub_field('practice_area_icon', 'option'); ?>
+<h4><a href="<?php the_sub_field('practice_area_link', 'option'); ?>">
+<span style="background:url(<?php echo $parea_img['url']; ?>) left top no-repeat"></span><?php the_sub_field('practice_area_title', 'option'); ?></a></h4>
+
+<hr /></div>
+
+<p><?php the_sub_field('practice_area_short_content', 'option'); ?> ... <span><a class="pull-right" href="<?php the_sub_field('practice_area_link', 'option'); ?>">Learn More</a></span></p>
+</div>
+</div>
+<?php } ?>
+<?php $counter++; $row_counter++; endwhile; endif; wp_reset_postdata(); ?>
+
+
+</div>
+
+<div class="row">
+
+<?php $counter = 0; $row_counter = 1; ?>
+<?php if( have_rows('practice_areas', 'option') ): while ( have_rows('practice_areas', 'option') ) : the_row(); ?>
+<?php if ($row_counter >=4 && $row_counter <=6 ) { $counter++; ?>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-left pra-box">
+<div class="home-practicearea">
+<div class="pra-title pra-icon<?php echo $counter;?>">
+<?php $parea_img = get_sub_field('practice_area_icon', 'option'); ?>
+<h4><a href="<?php the_sub_field('practice_area_link', 'option'); ?>">
+<span style="background:url(<?php echo $parea_img['url']; ?>) left top no-repeat"></span><?php the_sub_field('practice_area_title', 'option'); ?></a></h4>
+
+<hr /></div>
+
+<p><?php the_sub_field('practice_area_short_content', 'option'); ?> ... <span><a class="pull-right" href="<?php the_sub_field('practice_area_link', 'option'); ?>">Learn More</a></span></p>
+</div>
+</div>
+<?php } ?>
+<?php  $row_counter++; endwhile; endif; wp_reset_postdata(); ?>
+
+
+</div>
+
+<div class="row">
+
+<?php $counter = 3; $row_counter = 1; ?>
+<?php if( have_rows('practice_areas', 'option') ): while ( have_rows('practice_areas', 'option') ) : the_row(); ?>
+<?php if ($row_counter >=7) { $counter++; ?>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-left pra-box">
+<div class="home-practicearea">
+<div class="pra-title pra-icon<?php echo $counter;?>">
+<h4><a href="<?php the_sub_field('practice_area_link', 'option'); ?>">
+<span style="background:url(<?php echo $parea_img['url']; ?>) left top no-repeat"></span><?php the_sub_field('practice_area_title', 'option'); ?></a></h4>
+
+<hr /></div>
+
+<p><?php the_sub_field('practice_area_short_content', 'option'); ?> ... <span><a class="pull-right" href="<?php the_sub_field('practice_area_link', 'option'); ?>">Learn More</a></span></p>
+</div>
+</div>
+<?php } ?>
+<?php $row_counter++; endwhile; endif; wp_reset_postdata(); ?>
+
+
+</div>
+
+</div>
+<div class="free-consu">
+
+	<div class="row">
+
+		<form name="caseconsultationform" id="caseconsultationform1" method="post" action="#" novalidate>
+
+		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-left">
+
+			<?php the_field('free_case_evaluation_content', 'option'); ?>
+
+		</div>
+
+		<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 pull-right">
+
+        	<div id="SUCCONMSG"></div>
+
+        	<div class="row">
+
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 pull-left">
+
+                    <div class="row">
+
+                        <div class="form-group col-xs-12 pull-left">
+
+                            <label>Name:*</label>
+
+                            <input type="text" class="form-control required" size="16" maxlength="50" value="" name="name" id="name">
+
+                        </div>
+
+                        <div class="form-group col-xs-12 pull-left">
+
+                            <label>Email:*</label>
+
+                            <input type="text" class="form-control required email" size="16" maxlength="60" value="" name="email" id="email">
+
+                        </div>
+
+                        <div class="form-group col-xs-12 pull-left">
+
+                            <label>Phone:*</label>
+
+                            <input type="text" class="form-control required" size="16" maxlength="50" value="" name="phone" id="phone">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 pull-left">
+
+                    <div class="row">
+
+                        <div class="form-group col-xs-12 pull-left">
+
+                            <label>Subject:*</label>
+
+                            <input type="text" class="form-control required" size="16" maxlength="60" value="" name="subject" id="subject">
+
+                        </div>
+
+                        <div class="form-group col-xs-12 pull-left">
+
+                            <label>Case Details:*</label>
+
+                            <textarea title="Message" name="message" id="message" class="form-control"></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pull-left">
+
+                    <div id="capcha">
+
+                        ﻿<div class="capcha-label left">Click or touch the <strong>Pin</strong></div>
+<div class="captchaimgouter"><span>plane <input type="radio" name="s3capcha" value="537907587"></span><div style="background: url(s3icons/fruit/plane_w1.png) bottom left no-repeat; width:41px; height:33px;cursor:pointer;display:none;" class="img captchaimg" ></div></div>
+<div class="captchaimgouter"><span>world <input type="radio" name="s3capcha" value="346346815"></span><div style="background: url(s3icons/fruit/world_w1.png) bottom left no-repeat; width:41px; height:33px;cursor:pointer;display:none;" class="img captchaimg" ></div></div>
+<div class="captchaimgouter"><span>pin <input type="radio" name="s3capcha" value="1462428950"></span><div style="background: url(s3icons/fruit/pin_w1.png) bottom left no-repeat; width:41px; height:33px;cursor:pointer;display:none;" class="img captchaimg" ></div></div>
+<div class="captchaimgouter"><span>camera <input type="radio" name="s3capcha" value="1043777485"></span><div style="background: url(s3icons/fruit/camera_w1.png) bottom left no-repeat; width:41px; height:33px;cursor:pointer;display:none;" class="img captchaimg" ></div></div>
+<div class="captchaimgouter"><span>cloud <input type="radio" name="s3capcha" value="1841952846"></span><div style="background: url(s3icons/fruit/cloud_w1.png) bottom left no-repeat; width:41px; height:33px;cursor:pointer;display:none;" class="img captchaimg" ></div></div>
+
+                    </div>
+
+                </div>
+
+                <div class="pull-right tab-fullwidth">
+
+                    <input type="hidden" id="pageState" name="pageState" value="">
+
+                    <input type="hidden" id="pageCity" name="pageCity" value="">
+
+                    <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Submit">
+
+                </div>
+
+            </div>
+
+        </div>
+
+		</form>
+
+	</div>
+
+</div></div>
+</div>
+
+<div class="clear">&nbsp;</div>
+	<div class="section-whitebg home-testmonial text-center">
+
+		<div class="container">
+
+			<h4>What our clients are saying</h4>
+
+			<div class="carousel slide" id="carousel-example-generic">
+
+				<div class="carousel-inner">
+                
+       <?php $row_counter=1; ?>    
+        <?php if( have_rows('testimonial_slider', 'option') ): while ( have_rows('testimonial_slider', 'option') ) : the_row(); ?>
+			<div class="item <?php if($row_counter==1){echo 'active';}?>">
+						<div class="carousel-caption">
+							<div class="test-dsc"><p><?php the_sub_field('testimonial_content', 'option'); ?></p>
+							</div>
+							<span class="test-auther">- <?php the_sub_field('testimonial_author', 'option'); ?></span>
+						</div>
+
+						</div>
+		   <?php $row_counter++; endwhile; endif; wp_reset_postdata(); ?>						
+					
+				</div><!-- Controls -->
+
+				<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"></a>
+				<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"></a>
+			</div>
+
+			<a class="btn btn-primary" href="<?php echo get_site_url(); ?>/about-the-firm/testimonials">VIEW ALL</a>
+
+		</div>
+
+	</div>
+<div class="clear">&nbsp;</div>
+
+<!-- Content area end -->
+	
+<?php get_footer('new');?>
